@@ -62,13 +62,7 @@ services:
     volumes:
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
-    command: >
-      certonly --webroot -w /var/www/certbot
-      --email thanhnguyen227034596@gmail.com
-      -d dockify-my-app.site
-      --agree-tos
-      --no-eff-email
-      --force-renewal
+    command: sh -c 'certonly --webroot -w /var/www/certbot -d dockify-my-app.site --email thanhnguyen227034596@gmail.com --agree-tos --no-eff-email --force-renewal && chmod -R 755 /etc/letsencrypt'
     networks:
       - app-network
 
