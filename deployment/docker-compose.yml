@@ -62,11 +62,13 @@ services:
     volumes:
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
-    entrypoint: ""
     command: >
-      certonly --webroot --webroot-path=/var/www/certbot 
-      --email thanhnguyen227034596@gmail.com --agree-tos --no-eff-email 
+      certonly --webroot -w /var/www/certbot
+      --email thanhnguyen227034596@gmail.com
       -d dockify-my-app.site
+      --agree-tos
+      --no-eff-email
+      --force-renewal
     networks:
       - app-network
 
