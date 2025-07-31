@@ -41,6 +41,7 @@ services:
   nginx:
     image: nginx:alpine
     container_name: my_app_nginx
+    user: root
     restart: unless-stopped
     ports:
       - "80:80"
