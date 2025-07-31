@@ -41,7 +41,6 @@ services:
   nginx:
     image: nginx:alpine
     container_name: my_app_nginx
-    user: root
     restart: unless-stopped
     ports:
       - "80:80"
@@ -50,8 +49,6 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
-
-    entrypoint: ["nginx", "-g", "daemon off;"]
     depends_on:
       - frontend
       - backend
